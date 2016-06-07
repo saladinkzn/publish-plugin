@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/saladinkzn/publish-plugin.svg?branch=master)](https://travis-ci.org/saladinkzn/publish-plugin)
+
 **Publish-plugin** is a simple gradle plugin which can be used to reduce boilerplate when using maven-publishing plugin.
 
 #### Usage
