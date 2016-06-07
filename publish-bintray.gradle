@@ -17,6 +17,6 @@ bintray {
     licenses = [ project.license ]
     labels = project.projectLabels.split(',')
   }
-  dryRun = System.getenv('BINTRAY_DRY_RUN')?.toBoolean() ?: true
+  dryRun = false // (System.getenv('BINTRAY_DRY_RUN')?.toBoolean()) ?: true
   publish = false
 }
