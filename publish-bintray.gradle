@@ -1,0 +1,22 @@
+apply plugin: 'com.jfrog.bintray'
+
+task bintrayDump << {
+  System.getenv().each {
+    println "${it.key} ${it.value}"
+  }
+}
+
+bintray {
+  user = System.getenv('BINTRAY_USER')
+  key = System.getenv('BINTRAY_KEY')
+  publications = ['pluginMaven']
+  pkg {
+    repo = 'maven'
+    name = project.name
+    desc = project.description
+    licenses = [ project.license ]
+    labels = project.projectLabels.split(',')
+  }
+  dryRun = System.getenv('BINTRAY_DRY_RUN')?.toBoolean()
+  publish = false
+}

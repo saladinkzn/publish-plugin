@@ -1,0 +1,66 @@
+apply(plugin: 'maven-publish')
+
+if(!project.tasks.findByName('classes')) {
+  throw new GradleException("Non-JVM projects are not supported yet")
+}
+
+// TODO: do not add this tasks if they're already exists.
+task('sourcesJar', type: org.gradle.jvm.tasks.Jar, dependsOn: project.classes, description: 'Creates sources jar') {
+  classifier = 'sources'
+  from sourceSets.main.allSource
+}
+
+task('javadocJar', type: org.gradle.jvm.tasks.Jar, description: 'Creates javadoc jar') {
+  dependsOn 'javadoc'
+}
+
+artifacts {
+  archives sourcesJar, javadocJar
+}
+
+def rootProject = project
+
+publishing {
+  publications {
+    pluginMaven(MavenPublication) {
+      pom.withXml {
+        asNode().with {
+          appendNode('name', rootProject.name)
+          appendNode('description', rootProject.description)
+          appendNode('url', rootProject.project_website)
+          appendNode('scm').with {
+            appendNode('url', rootProject.project_scm)
+            appendNode('connection', rootProject.project_scm)
+            appendNode('developerConnection', rootProject.project_scm)
+          }
+          appendNode('licenses').with {
+            appendNode('license').with {
+              appendNode('name', rootProject.license)
+              appendNode('url', rootProject.license_url)
+              appendNode('distribution', 'repo')
+            }
+          }
+          appendNode('developers').with {
+            appendNode('developer').with {
+              appendNode('id', rootProject.developerId)
+              appendNode('name', rootProject.developerName)
+            }
+          }
+          it
+        }
+      }
+
+      from components.java
+//
+      artifact sourcesJar {
+        classifier 'sources'
+      }
+
+      artifact javadocJar {
+        classifier "javadoc"
+      }
+    }
+  }
+}
+
+project.tasks.build.finalizedBy project.tasks.publishToMavenLocal
