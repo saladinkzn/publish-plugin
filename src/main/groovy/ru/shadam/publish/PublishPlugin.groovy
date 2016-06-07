@@ -18,7 +18,6 @@ class PublishPlugin implements Plugin<Project> {
       throw new GradleException("Non-JVM projects are not supported yet")
     }
 
-    // TODO: do not add this tasks if they're already exists.
     if(!project.tasks.findByName('sourcesJar')) {
       project.task('sourcesJar', type: Jar, dependsOn: project.classes, description: 'Creates sources jar') {
         classifier = 'sources'
