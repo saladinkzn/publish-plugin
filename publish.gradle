@@ -59,6 +59,23 @@ publishing.publications {
         classifier "javadoc"
       }
     }
+
+  marker(MavenPublication) {
+    artifactId = 'ru.shadam.publish' + '.gradle.plugin'
+    groupId = 'ru.shadam.publish'
+    pom.withXml {
+      def root = it.asElement()
+      def document = root.ownerDocument
+      def dependencies = root.appendChild(document.createElement("dependencies"))
+      def dependency = dependencies.appendChild(document.createElement("dependency"))
+      def groupId = dependency.appendChild(document.createElement("groupId"))
+      groupId.textContent = project.group
+      def artifactId = dependency.appendChild(document.createElement("artifactId"))
+      artifactId.textContent = project.name
+      def version = dependency.appendChild(document.createElement("version"))
+      version.textContent = project.version
+    }
+  }
 }
 
 project.tasks.build.finalizedBy project.tasks.publishToMavenLocal
