@@ -13,17 +13,13 @@ before_install:
   chmod +x gradlew
 env:
   global:
+    - secure: "v7MNeWkjqBgPPiSJG223tehNT0MzTK/Dxx4IJjr2sIS1TjaVz8Drcwxu5YAmytl9DOZien4soCihDxDT6b0gnNPORyAgWDmiY0SZiddaeJX4UC6JjpNPYMX/NP1+s6DDKgrICTortcpviqr9AEXeyAk5OY/tr9JffKSAHW27mAE5M0LMLBaAxOxl1u9RRvk93aVVxP8lZ5A5x9zaWBx1v33Sdeub7mkfVISYpCB00CnfbUZrKNjP9urLByGJqNk+7kRjUtNkG83Aj+SyxMU83CIHoEPagUhIBuV2A/7CkwN9WVTRNSC7YsSw7gz69pITy4dvYDhPhhw289ECJ5iyheyGV2pEAQRWwG8nvvLvWMTaCovT6D/j4tUdTX28OAqGmJGwTz0IqzQSCmnaG7aW6tHZZBVmkJF1GWfNOzC4tYcV4w/O0I7nb27IHYADL63X5/tphblTICliyeKT/Swg6hvVmNiKdU4BX/QmfiuCj6wGRfktyGMQ6a4U8gR6vh32lOSLAh3Rxekwjf0vU/oKNl4ZkTY0kEEKW83OiCxv3Uk57SSD3Y+uTJOa6PRsQOOBkJwzKM+4AURQxhoNIjUeMpyq/xT8O7EiUVi882MBtQE3C5+SqLX8FYwkMkIR9VdIioGcFgeVUPk16uzdA9bMzV33wWXg4nP0OeiiXOdZ3jQ="
+    - secure: "If4+ZG+rxrb1pTL+jJndZIRs9W3yN1ajfrF344VioUAZmPGQDwTLIwoU+3IXF5vmRsNIfsTWe7ZkM6FG7+9fkwVQoCX8eCTkXVPa2kAhRDVhfBwaUKcLmmVNglOoQ1lizf2aqzvshhoLcdbYr+gC2pqFIKX7pnOCC8AtMzSSPCg0um4UhWu8DySfYfXjflWWDdIywy7LuX5cb3epmkKKKD0kelxGX54LAaXvGHTb19IsMeUnnQFchZcjP+Is5fP3MN49a88W0Y7eURgY6buJI2s2WQNQiFfMASt/VZEiFDIx9DK3hdHueFiOvjU834cdPfnOsoCxw7k2/fDxkYsaRwt4wwS3IuxNxaK2b+biuQqez73krcbxrEiMYgxNhV7zd6TyOvQClXIHN0zVSy8sWM8bzzpAYE+WYcZ5LXJc3l51o942R/oKEWW+gL+a96j50447t0KpbncQUeV032Jez8mM9I4+FD1L9RZlC+nh7cfHfwuRH6craz5alOwIf/t4aYCJYb9yre/Q6QLOAcfog7S/Aw0W7VvB9Bx8OlpcLxEUTev6WrVRua6MUCRALlZcC077uZzT/Ogs0AL/Kn53dYIczfhTLcpChPQxOp0p/ML0x7CsGgxFsqserk0gTRFLdZ8MR2tj3GTW93Rtdo6KD3Z3c/MIJBNp6VuxFRJYNr8="
 
 deploy:
-#  - provider: script
-#    skip_cleanup: true
-#    script: ./gradlew artifactoryPublish -PbintrayUser=${BINTRAY_USER} -PbintrayKey=${BINTRAY_KEY}
-#    on:
-#      branch: master
-#      jdk: oraclejdk8
-#  - provider: script
-#    skip_cleanup: true
-#    script: ./gradlew bintrayDeploy
-#    on:
-#      tags: true
-#      jdk: oraclejdk8
+  - provider: script
+    skip_cleanup: true
+    script: ./gradlew bintrayDeploy
+    on:
+      tags: true
+      jdk: oraclejdk8

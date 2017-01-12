@@ -74,6 +74,8 @@ publishing.publications {
       artifactId.textContent = project.name
       def version = dependency.appendChild(document.createElement("version"))
       version.textContent = project.version
+      def scope = dependency.appendChild(document.createElement('scope'))
+      scope.textContent = 'compile'
     }
   }
 }
