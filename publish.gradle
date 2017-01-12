@@ -62,7 +62,7 @@ publishing.publications {
 
   marker(MavenPublication) {
     artifactId = 'ru.shadam.publish-plugin' + '.gradle.plugin'
-    groupId = 'ru.shadam.publish'
+    groupId = 'ru.shadam.publish-plugin'
     pom.withXml {
       def root = it.asElement()
       def document = root.ownerDocument
