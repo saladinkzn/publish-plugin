@@ -9,7 +9,7 @@ task bintrayDump << {
 bintray {
   user = System.getenv('BINTRAY_USER')
   key = System.getenv('BINTRAY_KEY')
-  publications = ['pluginMaven']
+  publications = ['pluginMaven', 'marker']
   pkg {
     repo = 'maven'
     name = project.name
