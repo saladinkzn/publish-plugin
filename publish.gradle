@@ -61,7 +61,7 @@ publishing.publications {
     }
 
   marker(MavenPublication) {
-    artifactId = 'ru.shadam.publish' + '.gradle.plugin'
+    artifactId = 'ru.shadam.publish-plugin' + '.gradle.plugin'
     groupId = 'ru.shadam.publish'
     pom.withXml {
       def root = it.asElement()
