@@ -19,7 +19,7 @@ class SimpleSpecification extends Specification {
     buildFile << """
       plugins {
         id 'java'
-        id 'ru.shadam.publish'
+        id 'ru.shadam.publish-plugin'
       }
     """
 
@@ -39,7 +39,7 @@ class SimpleSpecification extends Specification {
     buildFile << """
       plugins {
         id 'java'
-        id 'ru.shadam.publish'
+        id 'ru.shadam.publish-plugin'
       }
 
       publish {
@@ -83,7 +83,7 @@ class SimpleSpecification extends Specification {
     buildFile << """
       plugins {
         id 'java'
-        id 'ru.shadam.publish'
+        id 'ru.shadam.publish-plugin'
       }
 
       publish {
@@ -125,7 +125,7 @@ class SimpleSpecification extends Specification {
     buildFile << """
       plugins {
         id 'java'
-        id 'ru.shadam.publish'
+        id 'ru.shadam.publish-plugin'
       }
 
       publish {
